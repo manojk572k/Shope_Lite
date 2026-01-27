@@ -1,6 +1,8 @@
+const JWT_SECRET = process.env.JWT_SECRET;
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
+
 
 exports.register = async (req, res) => {
   try {
@@ -76,7 +78,7 @@ exports.login = async (req, res) => {
       });
     }
 
-    if (!process.env.JWT_SECRET) {
+    if (!JWT_SECRET) {
       console.error("JWT_SECRET is missing in environment variables");
       return res.status(500).json({
         status: "error",
@@ -86,7 +88,7 @@ exports.login = async (req, res) => {
 
     const token = jwt.sign(
       { userId: user._id, role: user.role },
-      process.env.JWT_SECRET,
+      JWT_SECRET,
       { expiresIn: "1h" }
     );
 

@@ -1,7 +1,9 @@
+require("dotenv").config();
+const MONGO_URI = process.env.MONGO_URI;
+const PORT = process.env.PORT || 5050;
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-require("dotenv").config();
 
 const authRoutes = require("./routes/authRoutes");
 
@@ -22,8 +24,8 @@ console.log("CWD:", process.cwd());
 // routes
 app.get("/", (req, res) => {
   return res.status(200).json({
-    status: "success",
-    message: "Server is running",
+    status: "Ok",
+    message: "Shope_Lite Backend Running",
     data: {}
   });
 });
@@ -45,10 +47,9 @@ app.use("/api/auth", authRoutes);
 
 async function startServer() {
   try {
-    await mongoose.connect(process.env.MONGO_URI);
+    await mongoose.connect(MONGO_URI);
     console.log("MongoDB connected");
 
-    const PORT = process.env.PORT || 5050;
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   } catch (err) {
     console.error("MongoDB connection failed:", err.message);
