@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../layouts/CartContext";
-import UseTitle from "../hooks/useTitle";
 
 export default function Checkout() {
   const { total, clearCart } = useCart();

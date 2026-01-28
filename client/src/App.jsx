@@ -4,7 +4,6 @@ import ProtectedRoute from "./auth/ProtectedRoute";
 import AdminRoute from "./auth/AdminRoute";
 
 import Auth from "./auth/Auth";
-import Forbidden from "./pages/Forbidden";
 
 import AppLayout from "./layouts/AppLayout";
 import { CartProvider } from "./layouts/CartContext";
@@ -24,7 +23,6 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Navigate to="/login" replace />} />
             <Route path="/login" element={<Auth />} />
-            <Route path="/forbidden" element={<Forbidden />} />
 
             {/* Protected App */}
             <Route
