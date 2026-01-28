@@ -42,6 +42,15 @@ app.use((req, res, next) => {
 });
 
 
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://shope-lite.onrender.com/"
+  ],
+  credentials: true
+}));
+
+
 // ✅ register/login routes must be public (no auth middleware here)
 app.use("/api/auth", authRoutes);
 
