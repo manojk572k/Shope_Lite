@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://shope-lite.onrender.com/"
+    "https://shope-lite.onrender.com"
   ],
   credentials: true
 }));
