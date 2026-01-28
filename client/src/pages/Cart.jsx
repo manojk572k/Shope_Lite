@@ -1,12 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
-import useTitle from "../hooks/useTitle";
+import UseTitle from "../hooks/useTitle";
 import { useCart } from "../layouts/CartContext";
 
 
 export default function Cart() {
   const { items, total, removeFromCart, changeQty } = useCart();
   const nav = useNavigate();
-  useTitle("Cart | ShopLite");
+  UseTitle("Cart | ShopLite");
 
 
   if (items.length === 0) {

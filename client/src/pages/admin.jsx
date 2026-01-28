@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../api";
-import useTitle from "../hooks/useTitle";
+import UseTitle from "../hooks/useTitle";
 
 export default function Admin() {
   const [data, setData] = useState(null);
@@ -8,7 +8,7 @@ export default function Admin() {
   useEffect(() => {
     api.get("/auth/admin").then(res => setData(res.data));
   }, []);
-  useTitle("Admin | ShopLite");
+  UseTitle("Admin | ShopLite");
 
 
 

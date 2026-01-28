@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { PRODUCTS } from "../data/products";
-import useTitle from "../hooks/useTitle";
+import UseTitle from "../hooks/useTitle";
 import { useCart } from "../layouts/CartContext";
 import "./Shop.css";
 
 export default function Shop() {
   const { addToCart } = useCart();
 
-    useTitle("Shop | ShopLite");
+    UseTitle("Shop | ShopLite");
 
 
   return (

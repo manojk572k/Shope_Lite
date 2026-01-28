@@ -1,3 +1,8 @@
 export default function Forbidden() {
-  return <h2>403 Forbidden</h2>;
+  return (
+    <div style={{ padding: 24 }}>
+      <h1>403 - Forbidden</h1>
+      <p>Access denied.</p>
+    </div>
+  );
 }
