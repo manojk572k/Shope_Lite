@@ -14,3 +14,6 @@ export default function Admin() {
 
   return <pre>{JSON.stringify(data, null, 2)}</pre>;
 }
+
+
+// Gave all naming starts with Uppercase

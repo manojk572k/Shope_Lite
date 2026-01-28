@@ -20,3 +20,6 @@ const card = {
   border: "1px solid rgba(255,255,255,0.10)",
   background: "rgba(255,255,255,0.05)"
 };
+
+
+// Gave all naming starts with Uppercase
