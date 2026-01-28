@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./auth/AuthContext";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import AdminRoute from "./auth/AdminRoute";
-
+// Gave all naming starts with Uppercase
 import Auth from "./auth/Auth";
 
 import AppLayout from "./layouts/AppLayout";
