@@ -1,0 +1,317 @@
+/* =========================
+   CHECKOUT - FINAL UI
+   ========================= */
+
+.coPage{
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 18px 24px;
+  color: #f8fafc;
+}
+
+.coHead{
+  margin: 18px 0 12px;
+}
+
+.coTitle{
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.coSub{
+  margin: 6px 0 0;
+  color: rgba(248,250,252,0.70);
+  font-size: 13px;
+}
+
+.coLayout{
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 18px;
+  align-items: start;
+}
+
+/* Cards */
+.coCard{
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.25);
+}
+
+.coCard + .coCard{ margin-top: 12px; }
+
+.coCardTitle{
+  margin: 0 0 10px;
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.coForm{ min-width: 0; }
+.coSummary{ min-width: 0; }
+
+.sticky{
+  position: sticky;
+  top: 90px;
+}
+
+/* Grids */
+.coGrid2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.coGrid3{
+  display: grid;
+  grid-template-columns: 1.2fr 0.6fr 0.8fr;
+  gap: 12px;
+}
+
+/* Inputs */
+.coLabel{
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  color: rgba(248,250,252,0.85);
+  margin-top: 10px;
+}
+
+.coInput, .coTextarea{
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  padding: 10px 10px;
+  outline: none;
+}
+
+.coTextarea{
+  min-height: 90px;
+  resize: vertical;
+}
+
+.coInput.error{
+  border-color: rgba(220,38,38,0.55);
+  box-shadow: 0 0 0 3px rgba(220,38,38,0.10);
+}
+
+.coErr{
+  color: rgba(255, 120, 120, 0.95);
+  font-size: 12px;
+}
+
+/* Radios */
+.coRadio{
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.coRadio.active{
+  border-color: rgba(99,102,241,0.55);
+  background: rgba(99,102,241,0.10);
+}
+
+.coRadio input{ margin-top: 4px; }
+
+.coRadioRow{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.coRadioTitle{ font-weight: 900; font-size: 13px; }
+.coRadioPrice{ font-weight: 900; color: rgba(248,250,252,0.95); }
+.coRadioHint{ font-size: 12px; color: rgba(248,250,252,0.65); margin-top: 4px; }
+
+/* Payment buttons */
+.coPayRow{
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.coPayBtn{
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  font-size: 13px;
+}
+
+.coPayBtn.active{
+  border-color: rgba(99,102,241,0.55);
+  background: rgba(99,102,241,0.14);
+}
+
+.coPayHint{
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(248,250,252,0.65);
+}
+
+/* Summary list */
+.coMiniList{
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.coMiniItem{
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.coMiniImg{
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: rgba(255,255,255,0.06);
+}
+
+.coMiniInfo{
+  min-width: 0;
+}
+
+.coMiniTitle{
+  font-weight: 900;
+  font-size: 13px;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.coMiniMeta{
+  color: rgba(248,250,252,0.65);
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.coMiniLine{
+  font-weight: 900;
+  font-size: 13px;
+}
+
+.coMore{
+  color: rgba(248,250,252,0.65);
+  font-size: 12px;
+}
+
+/* Rows */
+.coRow{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  color: rgba(248,250,252,0.85);
+  font-size: 13px;
+}
+.coRow.total{
+  font-weight: 900;
+  font-size: 14px;
+  color: #fff;
+}
+
+.coDivider{
+  height: 1px;
+  background: rgba(255,255,255,0.10);
+  margin: 10px 0;
+}
+
+/* Buttons */
+.coBtn{
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.coBtn.primary{
+  background: rgba(99,102,241,0.95);
+  border-color: rgba(99,102,241,0.55);
+}
+
+.coBtn.ghost{ background: transparent; }
+.coBtn.full{ width: 100%; }
+
+.coBtn:disabled{
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Error box */
+.coErrorBox{
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(220,38,38,0.35);
+  background: rgba(220,38,38,0.12);
+  color: rgba(248,250,252,0.90);
+  font-size: 12px;
+}
+
+/* Empty */
+.coEmpty{
+  margin-top: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  border-radius: 16px;
+  padding: 18px;
+  text-align: center;
+}
+
+.coEmptyIcon{
+  font-size: 34px;
+  margin-bottom: 8px;
+}
+
+.coEmpty h3{
+  margin: 0 0 6px;
+  font-weight: 900;
+}
+
+.coEmpty p{
+  margin: 0 0 12px;
+  color: rgba(248,250,252,0.70);
+  font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 980px){
+  .coLayout{
+    grid-template-columns: 1fr;
+  }
+  .sticky{
+    position: static;
+  }
+  .coGrid2{ grid-template-columns: 1fr; }
+  .coGrid3{ grid-template-columns: 1fr; }
+}

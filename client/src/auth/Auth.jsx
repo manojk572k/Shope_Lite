@@ -1,5 +1,5 @@
-import { useState }from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import api from "../api";
 import { useAuth } from "../auth/AuthContext";
 import useTitle from "../hooks/useTitle";
@@ -20,15 +20,13 @@ export default function Auth() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [busy, setBusy] = useState(false);
-  useTitle(mode === "login" ? "Login | ShopLite" : "Register | ShopLite");
 
+  useTitle(isLogin ? "Login | ShopLite" : "Register | ShopLite");
 
   function switchMode(nextMode) {
     setError("");
     setSuccess("");
     setMode(nextMode);
-
-    // reset password fields when switching
     setPassword("");
     setConfirmPassword("");
   }
@@ -38,7 +36,6 @@ export default function Auth() {
     setError("");
     setSuccess("");
 
-    // basic validation
     if (!email || !password || (!isLogin && !username)) {
       setError("Please fill all required fields.");
       return;
@@ -64,18 +61,15 @@ export default function Auth() {
         return;
       }
 
-      // REGISTER
       await api.post("/auth/register", { username, email, password });
 
-      // ✅ After register, go to login mode (NOT auto-login)
       setSuccess("Account created successfully. Please login.");
       switchMode("login");
-      setEmail(email); // keep email filled for convenience
+      setEmail(email);
     } catch (err) {
       const msg = err?.response?.data?.message || "Something went wrong";
       setError(msg);
 
-      // If user already exists, move to login mode
       if (err?.response?.status === 409) {
         setSuccess("Account already exists. Please login.");
         switchMode("login");
@@ -149,6 +143,14 @@ export default function Auth() {
             </div>
           )}
 
+          {isLogin && (
+            <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 6 }}>
+              <Link to="/forgot-password" className="link-btn" style={{ padding: 0 }}>
+                Forgot password?
+              </Link>
+            </div>
+          )}
+
           <button type="submit" disabled={busy}>
             {busy ? "Please wait..." : isLogin ? "Login" : "Register"}
           </button>
@@ -158,22 +160,14 @@ export default function Auth() {
           {isLogin ? (
             <>
               <span>Don’t have an account?</span>
-              <button
-                type="button"
-                className="link-btn"
-                onClick={() => switchMode("register")}
-              >
+              <button type="button" className="link-btn" onClick={() => switchMode("register")}>
                 Register
               </button>
             </>
           ) : (
             <>
               <span>Already have an account?</span>
-              <button
-                type="button"
-                className="link-btn"
-                onClick={() => switchMode("login")}
-              >
+              <button type="button" className="link-btn" onClick={() => switchMode("login")}>
                 Login
               </button>
             </>
