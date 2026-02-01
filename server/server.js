@@ -24,8 +24,12 @@ app.use(
   })
 );
 
-// preflight (Express-safe)
-app.options("/*", cors());
+// ✅ handle preflight safely (no app.options wildcard)
+app.use((req, res, next) => {
+  if (req.method === "OPTIONS") return res.sendStatus(204);
+  next();
+});
+
 
 
 // request logger
