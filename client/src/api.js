@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5050";
+const rawBase = import.meta.env.VITE_API_BASE_URL || "https://shope-lite.onrender.com";
+const baseUrl = rawBase.replace(/\/+$/, ""); // remove trailing /
 
 const api = axios.create({
   baseURL: `${baseUrl}/api`,
@@ -13,4 +14,3 @@ api.interceptors.request.use((config) => {
 });
 
 export default api;
-

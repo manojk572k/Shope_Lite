@@ -17,10 +17,16 @@ app.use(express.json());
 // ✅ single cors config (only once)
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://shope-lite.onrender.com"],
+    origin: ["http://localhost:5173", "https://shope-lite.netlify.app"],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+// handle preflight for all routes
+app.options("*", cors());
+
 
 // request logger
 app.use((req, res, next) => {
