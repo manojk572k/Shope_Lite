@@ -24,8 +24,8 @@ app.use(
   })
 );
 
-// handle preflight for all routes
-app.options("*", cors());
+// preflight (Express-safe)
+app.options("/*", cors());
 
 
 // request logger
