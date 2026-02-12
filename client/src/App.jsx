@@ -15,6 +15,8 @@ import Profile from "./pages/Profile.jsx";
 import Admin from "./pages/Admin.jsx";
 import ForgotPassword from "./pages/ForgotPassword.jsx";
 import ResetPassword from "./pages/ResetPassword.jsx";
+import About from "./pages/About.jsx";
+
 
 function Forbidden() {
   return (
@@ -43,6 +45,7 @@ export default function App() {
                 <Route path="shop" element={<Shop />} />
                 <Route path="product/:id" element={<ProductDetails />} />
                 <Route path="cart" element={<Cart />} />
+                <Route path="about" element={<About />} />
 
                 {/* Protected pages */}
                 <Route
@@ -54,7 +57,7 @@ export default function App() {
                   }
                 />
                 <Route
-                  path="/app/profile"
+                  path="/profile"
                   element={
                     <ProtectedRoute>
                       <Profile />

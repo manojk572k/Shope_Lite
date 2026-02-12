@@ -3,6 +3,7 @@ import { useAuth } from "../auth/AuthContext";
 import { useCart } from "../layouts/CartContext";
 import { useSearch } from "../layouts/SearchContext";
 import { useEffect, useRef, useState } from "react";
+import About from "../pages/About.jsx";
 import "./AppLayout.css";
 
 export default function AppLayout() {
@@ -42,6 +43,18 @@ export default function AppLayout() {
               Cart
               {showBadge && quantity > 0 && <span className="badge">{quantity > 99 ? "99+" : quantity}</span>}
             </NavLink>
+
+            {!token && (
+                <>
+                <NavLink
+                to="/about"
+                className={({ isActive }) => `navItem ${!isActive ? "active" : ""}`}
+              >
+                About
+              </NavLink>
+                </>
+              )
+              }
 
             {token && (
               <>

@@ -1,0 +1,63 @@
+.about-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  background: radial-gradient(circle at top, #0b1220, #070b16);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f8fafc;
+}
+
+.about-card {
+  max-width: 800px;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.85);
+  padding: 32px 36px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+}
+
+.about-card h2 {
+  font-size: 28px;
+  margin-bottom: 14px;
+  font-weight: 800;
+}
+
+.intro {
+  font-size: 16px;
+  margin-bottom: 24px;
+  line-height: 1.6;
+  color: rgba(248, 250, 252, 0.9);
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.section h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #6366f1;
+}
+
+.section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.section ul li {
+  margin-bottom: 10px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(248, 250, 252, 0.85);
+}
+
+.conclusion {
+  margin-top: 20px;
+  font-size: 15px;
+  color: rgba(248, 250, 252, 0.75);
+  line-height: 1.6;
+}

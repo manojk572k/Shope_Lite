@@ -8,7 +8,7 @@ import "./Auth.css"; // we will reuse AppLayout.css styles here
 
 export default function Auth() {
   const nav = useNavigate();
-  const { login } = useAuth();
+  const { login,token } = useAuth();
   const { items } = useCart();
 
   const [mode, setMode] = useState("login"); // "login" | "register"
@@ -111,6 +111,18 @@ export default function Auth() {
               Cart
               {showBadge && quantity > 0 && <span className="badge">{quantity > 99 ? "99+" : quantity}</span>}
             </NavLink>
+
+            {!token && (
+                <>
+                <NavLink
+                to="/about"
+                className={({ isActive }) => `navItem ${!isActive ? "active" : ""}`}
+              >
+                About
+              </NavLink>
+                </>
+              )
+              }
             
           </nav>
         </div>
