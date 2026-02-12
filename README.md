@@ -4,7 +4,7 @@ It supports user authentication, product browsing, cart management, protected ro
 
 🚀 Live Demo
 Frontend (Netlify):
-👉 https://shope-lite.netlify.app/login
+👉 https://shope-lite.netlify.app
 
 Backend API (Render):
 👉 https://shope-lite.onrender.com
