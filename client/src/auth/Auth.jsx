@@ -1,13 +1,15 @@
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate, Link, NavLink } from "react-router-dom";
 import api from "../api";
 import { useAuth } from "../auth/AuthContext";
+import { useCart } from "../layouts/CartContext";
 import useTitle from "../hooks/useTitle";
-import "./Auth.css";
+import "./Auth.css"; // we will reuse AppLayout.css styles here
 
 export default function Auth() {
   const nav = useNavigate();
   const { login } = useAuth();
+  const { items } = useCart();
 
   const [mode, setMode] = useState("login"); // "login" | "register"
   const isLogin = mode === "login";
@@ -22,6 +24,15 @@ export default function Auth() {
   const [busy, setBusy] = useState(false);
 
   useTitle(isLogin ? "Login | ShopLite" : "Register | ShopLite");
+
+  // Cart badge quantity
+  const quantity = items.reduce((total, item) => total + item.qty, 0);
+  const [showBadge, setShowBadge] = useState(true);
+  const prevQtyRef = useRef(quantity);
+  useEffect(() => {
+    if (quantity > prevQtyRef.current) setShowBadge(true);
+    prevQtyRef.current = quantity;
+  }, [quantity]);
 
   function switchMode(nextMode) {
     setError("");
@@ -57,12 +68,11 @@ export default function Auth() {
 
       if (isLogin) {
         await login(email, password);
-        nav("/app/shop");
+        nav("/app/shop"); // redirect after login
         return;
       }
 
       await api.post("/auth/register", { username, email, password });
-
       setSuccess("Account created successfully. Please login.");
       switchMode("login");
       setEmail(email);
@@ -82,6 +92,31 @@ export default function Auth() {
 
   return (
     <div className="auth-page">
+
+      {/* ---------- NAVBAR SAME AS APPLAYOUT ---------- */}
+      <header className="app-nav">
+        <div className="brand">ShopLite</div>
+
+        <div className="navCenter">
+          <nav className="links">
+            <NavLink to="/app/shop" className={({ isActive }) => `navItem ${isActive ? "active" : ""}`}>
+              Shop
+            </NavLink>
+
+            <NavLink
+              to="/app/cart"
+              className={({ isActive }) => `navItem cart ${isActive ? "active" : ""}`}
+              onClick={() => setShowBadge(false)}
+            >
+              Cart
+              {showBadge && quantity > 0 && <span className="badge">{quantity > 99 ? "99+" : quantity}</span>}
+            </NavLink>
+            
+          </nav>
+        </div>
+      </header>
+      {/* ---------- END NAVBAR ---------- */}
+
       <div className="auth-card">
         <h2>{isLogin ? "Login" : "Create account"}</h2>
         <p className="subtitle">

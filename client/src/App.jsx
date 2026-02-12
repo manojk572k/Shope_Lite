@@ -20,7 +20,9 @@ function Forbidden() {
   return (
     <div style={{ padding: 18 }}>
       <h2>Forbidden</h2>
-      <p style={{ color: "rgba(248,250,252,0.70)" }}>I don’t have access to this page.</p>
+      <p style={{ color: "rgba(248,250,252,0.70)" }}>
+        I don’t have access to this page.
+      </p>
     </div>
   );
 }
@@ -32,26 +34,33 @@ export default function App() {
         <CartProvider>
           <SearchProvider>
             <Routes>
-              <Route path="/" element={<Navigate to="/login" replace />} />
-              <Route path="/login" element={<Auth />} />
-              <Route path="/forgot-password" element={<ForgotPassword />} />
-              <Route path="/reset-password/:token" element={<ResetPassword />} />
-              <Route path="/forbidden" element={<Forbidden />} />
 
-              <Route
-                path="/app"
-                element={
-                  <ProtectedRoute>
-                    <AppLayout />
-                  </ProtectedRoute>
-                }
-              >
-                <Route index element={<Navigate to="shop" replace />} />
+              {/* Layout wraps navbar and main content */}
+              <Route path="/" element={<AppLayout />}>
+
+                {/* Public pages */}
+                <Route index element={<Shop />} />
                 <Route path="shop" element={<Shop />} />
                 <Route path="product/:id" element={<ProductDetails />} />
                 <Route path="cart" element={<Cart />} />
-                <Route path="checkout" element={<Checkout />} />
-                <Route path="profile" element={<Profile />} />
+
+                {/* Protected pages */}
+                <Route
+                  path="/app/checkout"
+                  element={
+                    <ProtectedRoute>
+                      <Checkout />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/app/profile"
+                  element={
+                    <ProtectedRoute>
+                      <Profile />
+                    </ProtectedRoute>
+                  }
+                />
 
                 <Route
                   path="admin"
@@ -61,9 +70,18 @@ export default function App() {
                     </AdminRoute>
                   }
                 />
+
               </Route>
 
-              <Route path="*" element={<Navigate to="/login" replace />} />
+              {/* Auth pages outside layout */}
+              <Route path="/login" element={<Auth />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/reset-password/:token" element={<ResetPassword />} />
+              <Route path="/forbidden" element={<Forbidden />} />
+
+              {/* Fallback */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+
             </Routes>
           </SearchProvider>
         </CartProvider>
